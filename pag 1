@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordo Realitas</title>
+    <style>
+        /* Estilos básicos */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #loginPage, #welcomePage {
+            text-align: center;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #loginPage {
+            display: flex;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Logo estilização */
+        .logo {
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo do campo de entrada e botão */
+        input[type="password"], button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Página de Login -->
+    <div id="loginPage">
+        <img src="logo.png" alt="Logo" class="logo fade-in">
+        <input type="password" id="passwordInput" placeholder="Digite a senha">
+        <button onclick="checkPassword()">Entrar</button>
+    </div>
+
+    <!-- Página de Boas-vindas -->
+    <div id="welcomePage">
+        <img src="veio.png" alt="Logo" class="logo fade-in">
+        <p class="fade-in" style="font-size: 36px; margin-top: 20px;">A Ordo Realitas lhe aguarda</p>
+        <audio id="backgroundMusic" src="musica.mp3" autoplay loop></audio>
+    </div>
+
+    <script>
+        // Função para verificar a senha
+        function checkPassword() {
+            const passwordInput = document.getElementById("passwordInput").value;
+            const correctPassword = "Olhos sempre abertos";
+
+            if (passwordInput === correctPassword) {
+                // Oculta a página de login e exibe a página de boas-vindas
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("welcomePage").style.display = "flex";
+
+                // Toca a música de fundo
+                document.getElementById("backgroundMusic").play();
+            } else {
+                alert("Senha incorreta. Tente novamente.");
+            }
+        }
+    </script>
+
+</body>
+</html>
